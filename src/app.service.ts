@@ -8,7 +8,7 @@ export class AppService {
   }
 
   validateSecred(request: { crc: string; hmac: string }): any {
-    const tempSecret = 'testSecret';
+    const tempSecret = '74657374666f72436464';
 
     this.verifyHmacSignature(request.hmac, tempSecret);
 
