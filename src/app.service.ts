@@ -20,8 +20,10 @@ export class AppService {
   }
 
   getResponseHash(toHash: string) {
+    console.info(`string received: ${toHash}`);
     const hash = createHash('sha256');
     const response = hash.update(toHash);
+    console.info(`response generated: ${response}`);
     const buff = new Buffer(response.copy().digest('hex'));
     const base64data = buff.toString('base64');
     return base64data;
