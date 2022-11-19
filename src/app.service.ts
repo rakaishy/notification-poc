@@ -45,7 +45,7 @@ export class AppService {
     },
   ) {
     console.info(`push notification arrives with body: `);
-    console.info(body);
+    console.info(JSON.stringify(body));
     console.info(`provided headers for push notification: `);
     console.info(JSON.stringify(headers));
 

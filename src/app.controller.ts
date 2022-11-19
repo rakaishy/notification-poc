@@ -1,4 +1,4 @@
-import { Headers, Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Headers, Controller, Get, Post, Query, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -22,10 +22,10 @@ export class AppController {
 
   @Post('consumer')
   public async pushNotification(
+    @Body() data,
     @Query('hmac') hmac: string,
     @Headers('data-partition-id') dataPartitionId: string,
     @Headers('correlation-id') correlationId: string,
-    data: string,
   ) {
     this.appService.getBodyFromPush(data, {
       dataPartitionId,
