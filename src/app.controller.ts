@@ -25,7 +25,7 @@ export class AppController {
     @Query('hmac') hmac: string,
     @Headers('data-partition-id') dataPartitionId: string,
     @Headers('correlation-id') correlationId: string,
-    @Body('body') body: unknown,
+    @Body('data') body: string,
   ) {
     this.appService.getBodyFromPush(body, {
       dataPartitionId,
