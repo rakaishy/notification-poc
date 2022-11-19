@@ -20,10 +20,8 @@ export class AppService {
   }
 
   getResponseHash(toHash: string) {
-    console.info(`string received: ${toHash}`);
     const hash = createHash('sha256');
     const response = hash.update(toHash);
-    console.info(`response generated: ${response}`);
     const buff = new Buffer(response.copy().digest('hex'));
     const base64data = buff.toString('base64');
     return base64data;
@@ -45,8 +43,10 @@ export class AppService {
       correlationId: string;
     },
   ) {
-    console.info(`push notification arrives with body: ${body}`);
-    console.info(`provided heaers for push notification: ${headers}`);
+    console.timeStamp(`push notification arrives with body: `);
+    console.info(JSON.stringify(body));
+    console.timeStamp(`provided heaers for push notification: `);
+    console.info(JSON.stringify(headers));
 
     return new Promise<void>((resolve) => {
       resolve();

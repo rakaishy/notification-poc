@@ -15,8 +15,8 @@ export class AppController {
     @Query('crc') crc: string,
     @Query('hmac') hmac: string,
   ): Promise<unknown> {
-    console.info(`request enters with crc: ${crc}`);
-    console.info(`request enters with hmac: ${hmac}`);
+    console.timeStamp(`request challenged with crc: ${crc}`);
+    console.timeStamp(`request enters with hmac: ${hmac}`);
     return this.appService.validateSecred({ crc, hmac });
   }
 
