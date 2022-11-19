@@ -38,7 +38,7 @@ export class AppService {
   }
 
   getBodyFromPush(
-    body: unknown,
+    body: string,
     headers: {
       dataPartitionId: string;
       correlationId: string;
@@ -46,7 +46,7 @@ export class AppService {
   ) {
     console.info(`push notification arrives with body: `);
     console.info(body);
-    console.info(`provided heaers for push notification: `);
+    console.info(`provided headers for push notification: `);
     console.info(JSON.stringify(headers));
 
     return new Promise<void>((resolve) => {
