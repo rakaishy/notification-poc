@@ -3,7 +3,6 @@ import { createHash } from 'crypto';
 
 @Injectable()
 export class AppService {
-
   //TODO: DELETE ME
   getHello(): string {
     return 'Hello World!';
