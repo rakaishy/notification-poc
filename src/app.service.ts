@@ -3,11 +3,15 @@ import { createHash } from 'crypto';
 
 @Injectable()
 export class AppService {
+
+  //TODO: DELETE ME
   getHello(): string {
     return 'Hello World!';
   }
 
   validateSecred(request: { crc: string; hmac: string }): any {
+    //TODO: change to environment files to obtaine it live.
+    //Note: the password must be hex and even number under characters. (not mentioned on documentation.)
     const tempSecret = '74657374666f72436464';
 
     this.verifyHmacSignature(request.hmac, tempSecret);
@@ -24,10 +28,10 @@ export class AppService {
     const response = hash.update(toHash);
     const buff = new Buffer(response.copy().digest('hex'));
     const base64data = buff.toString('base64');
-    console.time();
     return base64data;
   }
 
+  //TODO: need to add real validation for hmac now that we have real responses.
   verifyHmacSignature(hmac: string, secret: string) {
     if (!hmac) {
       throw new HttpException('MISSING_HMAC_SIGNATURE', HttpStatus.BAD_REQUEST);
@@ -37,8 +41,9 @@ export class AppService {
     }
   }
 
+  //TODO: adjust real logic to cast results after filtering the kind.
   getBodyFromPush(
-    body: string,
+    body: unknown,
     headers: {
       dataPartitionId: string;
       correlationId: string;
